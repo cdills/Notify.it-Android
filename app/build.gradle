@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword 'Wildfire123'
+            storeFile file('C:/Users/cdills/AndroidStudioProjects/key.jks')
+            storePassword 'Wildfire123'
+        }
+    }
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        //Onesignal
+        manifestPlaceholders = [onesignal_app_id               : "35c1bfbe-8ad6-4348-af0d-9fd97381e41f",
+                                // Project number pulled from dashboard, local value is ignored.
+                                onesignal_google_project_number: "REMOTE"]
+        applicationId "cdills.helloworld"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionName '1.1'
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        versionCode 2
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+    productFlavors {
+    }
+}
+
+repositories {
+    maven { url 'https://maven.google.com' }
+    google()
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:customtabs:26.1.0'
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    //admob
+    compile 'com.google.android.gms:play-services-ads:11.2.2'
+    compile 'com.google.android.gms:play-services-base:11.2.2'
+    //oneSignal
+    compile 'com.onesignal:OneSignal:[3.6.5, 3.99.99]'
+    testCompile 'junit:junit:4.12'
+}

@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="cdills.helloworld.tabbedFragments">
+    <item
+        android:id="@+id/action_deleteResults"
+        android:orderInCategory="2"
+        android:title="@string/delete_results"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_refresh"
+        app:showAsAction="never"
+        android:title="@string/menu_refresh"
+        android:orderInCategory="1"/>
+
+    <item
+        android:id="@+id/menu_clearAll"
+        app:showAsAction="never"
+        android:title="@string/cancel_searches"
+        android:orderInCategory="3"/>
+
+</menu>
